@@ -1,0 +1,34 @@
+package com.jwd.test.service.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jwd.test.model.Igrac;
+import com.jwd.test.model.Zadatak;
+import com.jwd.test.repository.IgracRepository;
+import com.jwd.test.service.IgracService;
+
+@Service
+public class JpaIgracService implements IgracService {
+
+	@Autowired
+	IgracRepository igracRepository;
+	
+	@Override
+	public List<Igrac> findAll() {
+		return igracRepository.findAll();
+	}
+
+	@Override
+	public Igrac getOne(Long id) {
+		Optional<Igrac> igrac=igracRepository.findById(id);
+		
+		if(igrac.isPresent())
+			return igrac.get();
+		return null;
+	}
+
+}

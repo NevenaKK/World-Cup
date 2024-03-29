@@ -1,0 +1,128 @@
+package com.jwd.test.web.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.jwd.test.model.Utakmica;	
+import com.jwd.test.service.UtakmicaService;
+import com.jwd.test.support.UtakmicaDtoToUtakmica;
+import com.jwd.test.support.UtakmicaToUtakmicaDto;
+import com.jwd.test.web.dto.UtakmicaDTO;
+
+
+
+@RestController
+@RequestMapping(value = "/api/utakmice", produces = MediaType.APPLICATION_JSON_VALUE)
+
+public class UtakmicaController {
+	
+	@Autowired
+	UtakmicaService utakmicaService;
+	
+	@Autowired
+	UtakmicaDtoToUtakmica toUtakmica;
+	
+	@Autowired
+	UtakmicaToUtakmicaDto toUtakmicaDto;
+	
+	@GetMapping
+    public ResponseEntity<List<UtakmicaDTO>> getAll(
+    		 @RequestParam(required=false) Long repA,
+             @RequestParam(required=false) Long repB,
+    		 @RequestParam(value = "pageNo", defaultValue = "0") Integer pageNo){
+    		
+		
+		
+	 Page<Utakmica> utakmice=utakmicaService.search(repA, repB, pageNo);
+	 
+	 if(utakmice!=null) {
+	 
+	 HttpHeaders headers = new HttpHeaders();
+     headers.add("Total-Pages", Integer.toString(utakmice.getTotalPages()));
+     
+     return new ResponseEntity<>(toUtakmicaDto.convert(utakmice.getContent()),headers,HttpStatus.OK);
+	 }else
+		 return new ResponseEntity<List<UtakmicaDTO>>(HttpStatus.NOT_ACCEPTABLE);
+    	 
+        
+    }
+	
+	@GetMapping("/{id}") 
+	 public ResponseEntity<UtakmicaDTO> getOne(@PathVariable Long id){
+		 
+		 Utakmica utakmica=utakmicaService.findOne(id);
+		 
+		 if(utakmica != null) 
+	            return new ResponseEntity<>(toUtakmicaDto.convert(utakmica), HttpStatus.OK);
+	        else 
+	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);	        
+
+	 }
+	
+	 @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+	  public ResponseEntity<UtakmicaDTO> create (@Valid @RequestBody UtakmicaDTO utakmicaDTO){
+		  
+		  Utakmica utakmica=toUtakmica.convert(utakmicaDTO);
+		  
+		  Utakmica sacuvanaUtakmica=utakmicaService.save(utakmica); 
+		  
+		  if(sacuvanaUtakmica==null)
+			  return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+		  
+		  return new ResponseEntity<>(toUtakmicaDto.convert(sacuvanaUtakmica),HttpStatus.CREATED);
+		  
+		  
+	  }
+	 
+	 @DeleteMapping("/{id}")
+	  public ResponseEntity<UtakmicaDTO> delete (@PathVariable Long id){
+		  
+		 Utakmica obrisanaUtakmica=utakmicaService.delete(id);
+		  
+		  if(obrisanaUtakmica!=null)
+			  return new ResponseEntity<UtakmicaDTO>(HttpStatus.NO_CONTENT);
+		  else
+			  return new ResponseEntity<UtakmicaDTO>(HttpStatus.NOT_FOUND);
+		  
+	  }
+	 
+	 @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+	  public ResponseEntity<UtakmicaDTO> update(@PathVariable Long id,@Valid @RequestBody UtakmicaDTO utakmicaDTO){
+		  
+		  if(!id.equals(utakmicaDTO.getId()))
+			  return new ResponseEntity<UtakmicaDTO>(HttpStatus.BAD_REQUEST);
+		  
+		  Utakmica utakmica= toUtakmica.convert(utakmicaDTO);
+		  Utakmica izmenjenaUtakmica=utakmicaService.update(utakmica);
+		  
+		  return new ResponseEntity<UtakmicaDTO>(toUtakmicaDto.convert(izmenjenaUtakmica),HttpStatus.OK);
+		  
+	  }
+ 
+	 
+		@ExceptionHandler(value = DataIntegrityViolationException.class)
+		public ResponseEntity<Void> handle() {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+		}
+
+
+}

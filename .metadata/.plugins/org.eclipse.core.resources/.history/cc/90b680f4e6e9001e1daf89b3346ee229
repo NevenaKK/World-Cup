@@ -1,0 +1,27 @@
+package com.jwd.test.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Igraci {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+	@Column( nullable = false)
+    private String ime;
+	
+	@Column( nullable = false)
+    private String prezime;
+
+    @Column
+    private int postignutiGolovi;
+    
+    
+
+}

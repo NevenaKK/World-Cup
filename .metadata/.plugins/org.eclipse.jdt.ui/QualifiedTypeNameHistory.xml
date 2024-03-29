@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="com.jwd.test.model.Igraci"/>
+    <fullyQualifiedTypeName name="com.jwd.test.service.IgracService"/>
+    <fullyQualifiedTypeName name="com.jwd.test.support.IgracToIgracDto"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.jwd.test.support.ReprezentacijaToReprezentacijaDto"/>
+    <fullyQualifiedTypeName name="com.jwd.test.web.dto.ReprezentacijaDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.jwd.test.repository.UtakmicaRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.core.convert.converter.Converter"/>
+    <fullyQualifiedTypeName name="org.springframework.remoting.soap.SoapFaultException"/>
+    <fullyQualifiedTypeName name="com.jwd.test.service.UtakmicaService"/>
+    <fullyQualifiedTypeName name="com.jwd.test.support.UtakmicaDtoToUtakmica"/>
+    <fullyQualifiedTypeName name="com.jwd.test.support.UtakmicaToUtakmicaDto"/>
+    <fullyQualifiedTypeName name="com.jwd.test.model.Utakmica"/>
+    <fullyQualifiedTypeName name="com.jwd.test.web.dto.UtakmicaDTO"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.NotBlank"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="org.hibernate.validator.constraints.Length"/>
+    <fullyQualifiedTypeName name="com.jwd.test.repository.ReprezentacijaRepository"/>
+    <fullyQualifiedTypeName name="com.jwd.test.service.ReprezentacijaService"/>
+    <fullyQualifiedTypeName name="java.io.Console"/>
+    <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.jwd.test.web.dto.IgracDTO"/>
+    <fullyQualifiedTypeName name="com.jwd.test.model.Reprezentacija"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebApplicationContext"/>
+    <fullyQualifiedTypeName name="com.jwd.test.model.Igrac"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.jwd.test.repository.IgracRepository"/>
+    <fullyQualifiedTypeName name="org.hibernate.cfg.IdGeneratorResolverSecondPass"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
+</qualifiedTypeNameHistroy>

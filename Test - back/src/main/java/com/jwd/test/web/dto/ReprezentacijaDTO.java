@@ -1,0 +1,54 @@
+package com.jwd.test.web.dto;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
+
+
+
+@Component
+public class ReprezentacijaDTO {
+	
+	  private Long id;
+		
+	  @NotBlank
+	    private String naziv;
+	  @Size(max=3)
+	  @Length(min=3)
+	    private String skraceniNaziv;
+
+		public ReprezentacijaDTO() {
+			super();
+		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public String getNaziv() {
+			return naziv;
+		}
+
+		public void setNaziv(String naziv) {
+			this.naziv = naziv;
+		}
+
+		public String getSkraceniNaziv() {
+			return skraceniNaziv;
+		}
+
+		public void setSkraceniNaziv(String skraceniNaziv) {
+			this.skraceniNaziv = skraceniNaziv;
+		}
+	    
+	    
+	    
+	   
+
+}
